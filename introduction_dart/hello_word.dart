@@ -15,7 +15,7 @@ void main(List<String> args) {
   
   dir = 'Las Palmas'; 
 
-  print('Hola $name');
+  print('Hola $name y tengo $edad años');
   print('Dirección ${dir.toUpperCase()}');
   print('El valor de pi es $pi');
 }
