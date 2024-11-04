@@ -11,6 +11,17 @@ void main(List<String> args) {
 
   final sprites = <String>['ditto/front.png', 'ditto/back.png'];
 
+  //dynamic == null
+  dynamic errorMessage = 'Hola';
+  errorMessage = true;
+  errorMessage = 123;
+  errorMessage = 'Hola';
+  errorMessage = ['Hola', 'Hola'];
+  errorMessage = () => true;
+  errorMessage = null;
+
+  // errorMessage +=1
+
 
   print(
   """
