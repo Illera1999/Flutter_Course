@@ -30,6 +30,7 @@ void main(List<String> args) {
     $isAlive
     ${abilidades.toString()}
     $sprites
+    $errorMessage
   """ 
   );
 
