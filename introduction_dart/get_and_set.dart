@@ -1,5 +1,5 @@
 void main(List<String> args) {
-  Square square = Square(10);
+  Square square = Square( side: 10);
   square.setSide(20);
   print(square.getSide());
   print(square.getArea());
@@ -10,7 +10,9 @@ class Square {
 
   double side;
 
-  Square(this.side);
+  Square({
+    required this.side
+  });
 
   void setSide(double side) {
     this.side = side;
