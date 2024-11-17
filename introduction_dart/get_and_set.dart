@@ -8,21 +8,22 @@ void main(List<String> args) {
 
 class Square {
 
-  double side;
+  double _side;
 
   Square({
-    required this.side
-  });
+    required double side
+  }):assert(side >= 0, 'Side must be >= 0'),
+  _side = side;
 
   void setSide(double side) {
-    this.side = side;
+    _side = side;
   }
 
   double getSide() {
-    return this.side;
+    return _side;
   }
 
   double getArea() {
-    return this.side * this.side;
+    return _side * _side;
   }
 }
