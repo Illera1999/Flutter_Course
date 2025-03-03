@@ -33,10 +33,14 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Clik${clickCounter == 1 || clickCounter == -1 ? '' : 's'}',
-                  style: TextStyle(fontSize: 25)),
-              Text('$clickCounter',
-                  style: TextStyle(fontSize: 160, fontWeight: FontWeight.w100)),
+              Text(
+                'Clik${clickCounter == 1 || clickCounter == -1 ? '' : 's'}',
+                style: TextStyle(fontSize: 25),
+              ),
+              Text(
+                '$clickCounter',
+                style: TextStyle(fontSize: 160, fontWeight: FontWeight.w100),
+              ),
             ],
           ),
         ),
@@ -44,40 +48,52 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: Icon(Icons.plus_one),
+          FloatingActionButtonCustom(
+            icon: Icons.plus_one,
             onPressed: () {
               clickCounter++;
               setState(() {});
             },
           ),
           const SizedBox(height: 10),
-          FloatingActionButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: Icon(Icons.refresh),
+          FloatingActionButtonCustom(
+            icon: Icons.refresh,
             onPressed: () {
               clickCounter = 0;
               setState(() {});
             },
           ),
           const SizedBox(height: 10),
-          FloatingActionButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: Icon(Icons.exposure_minus_1),
+          FloatingActionButtonCustom(
+            icon: Icons.exposure_minus_1,
             onPressed: () {
+              if (clickCounter <= 0) return;
               clickCounter--;
               setState(() {});
             },
           ),
         ],
       ),
+    );
+  }
+}
+
+class FloatingActionButtonCustom extends StatelessWidget {
+  const FloatingActionButtonCustom({
+    super.key,
+    required this.icon,
+    this.onPressed,
+  });
+
+  final VoidCallback? onPressed;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+      onPressed: onPressed,
+      child: Icon(icon),
     );
   }
 }
