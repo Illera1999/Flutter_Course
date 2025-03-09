@@ -33,7 +33,6 @@ class HerMessageBubble extends StatelessWidget {
 }
 
 class _ImageBubble extends StatelessWidget {
-
   const _ImageBubble(this.image);
 
   final String image;
@@ -55,8 +54,9 @@ class _ImageBubble extends StatelessWidget {
           return Container(
             width: size.width * 0.7,
             height: 150,
-            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-            child: CircularProgressIndicator());
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );
