@@ -13,16 +13,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => DiscoverProvider()),
+        ChangeNotifierProvider(
+          lazy: false,
+          create: (_) => DiscoverProvider()..loadNextPage(),
+        ),
       ],
       child: MaterialApp(
         theme: AppTheme().getTheme(),
         title: 'Material App',
         home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Material App Bar'),
-          ),
-          body: const DiscoverScreen()
+          appBar: AppBar(title: const Text('Material App Bar')),
+          body: const DiscoverScreen(),
         ),
       ),
     );
