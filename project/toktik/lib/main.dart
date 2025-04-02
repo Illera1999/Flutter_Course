@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
         theme: AppTheme().getTheme(),
         title: 'Material App',
         home: Scaffold(
-          appBar: AppBar(title: const Text('Material App Bar')),
           body: const DiscoverScreen(),
         ),
       ),

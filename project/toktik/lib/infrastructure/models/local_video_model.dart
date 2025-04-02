@@ -18,11 +18,11 @@ class LocalVideoModel {
         name: json['name'] ?? 'No name',
         videoUrl: json['videoUrl'],
         likes: json['likes'] ?? 0,
-        video: json['video'] ?? 0,
+        video: json['views'] ?? 0,
       );
 
   Map<String, dynamic> toJson() {
-    return {'name': name, 'videoUrl': videoUrl, 'likes': likes, 'video': video};
+    return {'name': name, 'videoUrl': videoUrl, 'likes': likes, 'views': video};
   }
 
   VideoPost toVideoPostEntity() =>
