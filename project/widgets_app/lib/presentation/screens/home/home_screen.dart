@@ -47,7 +47,12 @@ class _CustomListTile extends StatelessWidget {
       subtitle: Text(menuItem.subTitle),
       trailing: Icon(Icons.chevron_right_outlined, color: color.primary,),
       onTap: () {
-        // Navegar a otras pantallas
+        // Navigator.of(context).push(
+        //   MaterialPageRoute(
+        //     builder: (context) => 
+        //   ),
+        // );
+        Navigator.pushNamed(context, menuItem.link);
       },
     );
   }
