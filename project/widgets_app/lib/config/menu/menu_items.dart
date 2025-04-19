@@ -60,4 +60,10 @@ class MenuItems {
       link: '/tutorial',
       icon: Icons.accessible_rounded
     ),
+    MenuItems(
+      title: 'InfiniteScroll y Pull',
+      subTitle: 'Listas infinitas y pull to refress',
+      link: '/infinite',
+      icon: Icons.list_alt_rounded,
+    ),
   ];
