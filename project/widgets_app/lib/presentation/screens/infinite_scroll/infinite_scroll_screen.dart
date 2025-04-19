@@ -53,11 +53,8 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
 
     setState(() {});
 
-    scrollController.animateTo(
-      scrollController.position.pixels + 500,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeOutCubic,
-    );
+    moveScrollToBotton();
+
   }
 
   Future<void> onRefresh() async {
@@ -73,6 +70,18 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     if (!isMounted) return;
 
     setState(() {});
+  }
+
+  void moveScrollToBotton() {
+    if (scrollController.position.pixels + 100 <=
+        scrollController.position.maxScrollExtent) {
+      return;
+    }
+    scrollController.animateTo(
+      scrollController.position.pixels + 120,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.fastOutSlowIn,
+    );
   }
 
   @override
