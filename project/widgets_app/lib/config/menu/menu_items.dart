@@ -66,4 +66,16 @@ class MenuItems {
       link: '/infinite',
       icon: Icons.list_alt_rounded,
     ),
+    MenuItems(
+      title: 'Contador',
+      subTitle: 'Contador con provider',
+      link: '/counter',
+      icon: Icons.plus_one_rounded,
+    ),
+    MenuItems(
+      title: 'Theme Changer',
+      subTitle: 'Cambiar el tema de la app',
+      link: '/theme-changer',
+      icon: Icons.color_lens,
+    ),
   ];
