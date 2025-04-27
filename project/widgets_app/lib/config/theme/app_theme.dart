@@ -25,8 +25,8 @@ class AppTheme {
 
   ThemeData getTheme() =>
       ThemeData(
-        brightness: isDarkMode ? Brightness.dark : Brightness.light,
         useMaterial3: true, 
+        brightness: isDarkMode ? Brightness.dark : Brightness.light,
         colorSchemeSeed: colorList[selectedColor],
         appBarTheme: AppBarTheme(
           centerTitle: false,
@@ -37,4 +37,14 @@ class AppTheme {
             color: Colors.white,
           ),
         ));
+  
+  AppTheme copyWith({
+    int? selectedColor,
+    bool? isDarkMode,
+  }) {
+    return AppTheme(
+      selectedColor: selectedColor ?? this.selectedColor,
+      isDarkMode: isDarkMode ?? this.isDarkMode,
+    );
+  }
 }
