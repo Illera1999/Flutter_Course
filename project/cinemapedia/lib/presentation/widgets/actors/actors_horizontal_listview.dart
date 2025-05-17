@@ -80,7 +80,7 @@ class _Slide extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 5),
-          //* Titulo
+          //* Nombre
           SizedBox(
             width: 150,
             child: Text(
@@ -95,7 +95,7 @@ class _Slide extends StatelessWidget {
           SizedBox(
             width: 150,
             child: Text(
-              'Interpretando: ${actor.character}',
+              'Interpretando a: ${actor.character}',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: textStyles.bodySmall?.copyWith(
