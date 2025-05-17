@@ -28,10 +28,10 @@ class ActorsMapNotifier extends StateNotifier<Map<String, List<Actor>>> {
   Future<void> loadActors(String movieId) async {
     if( state[movieId] != null) return;
     log('Loading actors for $movieId');
-    final movie = await getActorsByMovie(movieId);
+    final actors = await getActorsByMovie(movieId);
     state = {
       ...state,
-      movieId: movie
+      movieId: actors
     };
   }
 }

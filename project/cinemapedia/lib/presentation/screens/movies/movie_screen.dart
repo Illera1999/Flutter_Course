@@ -1,7 +1,6 @@
 import 'package:cinemapedia/domain/entities/actor.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:cinemapedia/presentation/providers/actors/actors_by_movie_provider.dart';
-import 'package:cinemapedia/presentation/providers/actors/initial_loading_details_provider.dart';
 import 'package:cinemapedia/presentation/providers/movies/movie_info_provider.dart';
 import 'package:cinemapedia/presentation/widgets/actors/actors_horizontal_listview.dart';
 import 'package:flutter/material.dart';
@@ -29,14 +28,13 @@ class _MovieScreenState extends ConsumerState<MovieScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final initialLoadingDetails = ref.watch(initialLoadingDetailsProvider);
-    if (initialLoadingDetails) {
+    final List<Actor>? actors = ref.watch(actorsByMovieProvider)[widget.moviesId];
+    final Movie? movie = ref.watch(movieInfoProvider)[widget.moviesId];
+    if (movie == null || actors == null) {
       return Scaffold(
         body: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
       );
     }
-    final Movie movie = ref.watch(movieInfoProvider)[widget.moviesId]!;
-    final List<Actor> actors = ref.watch(actorsByMovieProvider)[widget.moviesId]!;
     return Scaffold(
       body: CustomScrollView(
         physics: const ClampingScrollPhysics(),
@@ -44,7 +42,8 @@ class _MovieScreenState extends ConsumerState<MovieScreen> {
           _CustomSliverAppBar(movie: movie),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              (context, index) => _MovieDetails(movie: movie, actors: actors),
+              (context, index) => 
+              _MovieDetails(movie: movie, actors: actors),
               childCount: 1,
             ),
           ),
