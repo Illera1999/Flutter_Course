@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cinemapedia/domain/entities/actor.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:cinemapedia/presentation/providers/actors/actors_by_movie_provider.dart';
@@ -128,7 +129,7 @@ class __MovieDetailsState extends State<_MovieDetails> {
         const SizedBox(height: 10),
         // Hacer Actores
         ActorsHorizontalListView(actors: widget.actors),
-        const SizedBox(height: 100),
+        const SizedBox(height: 50),
       ],
     );
   }
@@ -155,7 +156,11 @@ class _CustomSliverAppBar extends StatelessWidget {
         background: Stack(
           children: [
             SizedBox.expand(
-              child: Image.network(movie.posterPath, fit: BoxFit.cover),
+              child: Image.network(movie.posterPath, fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress != null) return SizedBox();
+                return FadeIn(child: child);
+              },),
             ),
 
             const SizedBox.expand(

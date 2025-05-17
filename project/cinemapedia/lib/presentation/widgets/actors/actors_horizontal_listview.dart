@@ -59,23 +59,25 @@ class _Slide extends StatelessWidget {
           //* Imagen
           SizedBox(
             width: 150,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.network(
-                actor.profilePath,
-                width: 150,
-                fit: BoxFit.cover,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress != null) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      ),
-                    );
-                  }
-                  return child;
-                },
+            child: FadeInRight(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(
+                  actor.profilePath,
+                  width: 150,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress != null) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        ),
+                      );
+                    }
+                    return child;
+                  },
+                ),
               ),
             ),
           ),
