@@ -96,7 +96,6 @@ class _Slide extends StatelessWidget {
             width: 150,
             child: Text(
               'Interpretando a: ${actor.character}',
-              maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: textStyles.bodySmall?.copyWith(
                 fontWeight: FontWeight.w300,)
