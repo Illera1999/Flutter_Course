@@ -9,11 +9,11 @@ class CustomBottonNavigation extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: 'Home',
+          label: 'Inicio',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.search),
-          label: 'Search',
+          label: 'Categorías',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite),

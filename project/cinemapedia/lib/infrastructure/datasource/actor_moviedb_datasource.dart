@@ -19,7 +19,7 @@ class ActorMoviedbDatasource extends ActorsDatasource {
   List<Actor> _jsonToActor(Map<String, dynamic> json) {
     final CreditsResponse creditsResponse = CreditsResponse.fromJson(json);
     return creditsResponse.cast
-        .where((actor) => actor.profilePath != 'no-poster')
+        .where((actor) => actor.profilePath != '/ZYYmjgyF5UP1AVsvhzzDOFLCwG.jpg')
         .map((actor) => ActorMapper.castToEntity(actor))
         .toList();
   }
