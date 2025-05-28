@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cinemapedia/domain/entities/actor.dart';
 import 'package:cinemapedia/presentation/providers/actors/actors_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,7 +25,7 @@ class ActorsMapNotifier extends StateNotifier<Map<String, List<Actor>>> {
 
   Future<void> loadActors(String movieId) async {
     if( state[movieId] != null) return;
-    log('Loading actors for $movieId');
+    print('Loading actors for $movieId');
     final actors = await getActorsByMovie(movieId);
     state = {
       ...state,

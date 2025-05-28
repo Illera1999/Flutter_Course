@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:cinemapedia/config/helpers/human_formats.dart';
@@ -25,11 +24,11 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
   }
 
   void _onQueryChanged(String query) {
-    log('Query cambio');
+    print('Query cambio');
     isLoadingStream.add(true);
     if (_debounceTimer?.isActive ?? false) _debounceTimer!.cancel();
     _debounceTimer = Timer(const Duration(milliseconds: 500), () async {
-      log('Buscando peliculas');
+      print('Buscando peliculas');
       if (debounceMovies.isClosed) return;
       final movies = await onSearch(query);
       debounceMovies.add(movies);

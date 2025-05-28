@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,7 +25,7 @@ class MovieMapNotifier extends StateNotifier<Map<String, Movie>> {
 
   Future<void> loadMovie(String movieId) async {
     if( state[movieId] != null) return;
-    log('Loading movie $movieId');
+    print('Loading movie $movieId');
     final movie = await getMovie(movieId);
     state = {
       ...state,
