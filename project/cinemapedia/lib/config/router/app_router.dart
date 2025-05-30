@@ -3,53 +3,33 @@ import 'package:cinemapedia/presentation/views/views.dart';
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/home/0',
   routes: [
-    ShellRoute(
-      builder: (context, state, child) {
-        return HomeScreen(childView: child);
+    GoRoute(
+      path: '/home/:page',
+      name: HomeScreen.name,
+      builder: (cootext, state) {
+        final pageIndex = state.pathParameters['page'];
+        final index = int.tryParse(pageIndex ?? '0') ?? 0;
+        return HomeScreen(pageIndex: index);
       },
       routes: [
         GoRoute(
-          path: '/',
+          path: 'movie/:id',
+          name: MovieScreen.name,
           builder: (context, state) {
-            return const HomeView();
-          },
-          routes: [
-            GoRoute(
-              path: 'movie/:id',
-              name: MovieScreen.name,
-              builder: (context, state) {
-                final movieID = state.pathParameters['id'];
-                return MovieScreen(moviesId: movieID ?? 'no id');
-              },
-            ),
-          ],
-        ),
-        GoRoute(
-          path: '/favorites',
-          builder: (context, state) {
-            return const FavoriteView();
+            final movieID = state.pathParameters['id'];
+            return MovieScreen(moviesId: movieID ?? 'no id');
           },
         ),
       ],
     ),
+
+    GoRoute(
+      path: '/',
+      redirect: (_, _) {
+        return '/home/0';
+      },
+    ),
   ],
 );
-
-    // Rutas padre/hijo
-    // GoRoute(
-    //   path: '/',
-    //   name: HomeScreen.name,
-    //   builder: (cootext, state) => const HomeScreen(childView: FavoriteView(),),
-    //   routes: [
-    //     GoRoute(
-    //       path: 'movie/:id',
-    //       name: MovieScreen.name,
-    //       builder: (context, state) {
-    //         final movieID = state.pathParameters['id'];
-    //         return MovieScreen(moviesId: movieID ?? 'no id');
-    //       },
-    //     ),
-    //   ],
-    // ),
