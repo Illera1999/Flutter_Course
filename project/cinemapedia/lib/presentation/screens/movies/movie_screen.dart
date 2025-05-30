@@ -1,11 +1,10 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cinemapedia/domain/entities/actor.dart';
-import 'package:cinemapedia/domain/entities/movie.dart';
-import 'package:cinemapedia/presentation/providers/actors/actors_by_movie_provider.dart';
-import 'package:cinemapedia/presentation/providers/movies/movie_info_provider.dart';
+import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:cinemapedia/presentation/widgets/actors/actors_horizontal_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../domain/entities/entities.dart';
 
 class MovieScreen extends ConsumerStatefulWidget {
   static const String name = '/movie-screen';
@@ -135,19 +134,21 @@ class __MovieDetailsState extends State<_MovieDetails> {
   }
 }
 
-class _CustomSliverAppBar extends StatelessWidget {
+class _CustomSliverAppBar extends ConsumerWidget {
   final Movie movie;
   const _CustomSliverAppBar({required this.movie});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
     return SliverAppBar(
       actions: [
         IconButton(
           icon: const Icon(Icons.favorite_border),
           // icon: const Icon(Icons.favorite_rounded, color: Colors.red),
-          onPressed: () {},
+          onPressed: () {
+            ref.read(localStorageRepositoryProvider).toggleFavorite(movie);
+          },
         ),
       ],
       backgroundColor: Colors.black,
@@ -183,8 +184,8 @@ class _CustomSliverAppBar extends StatelessWidget {
             _CustomGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              stops: [0.7, 1],
-              colors: [Colors.transparent, Colors.black87],
+              stops: [0.8, 1],
+              colors: [Colors.transparent, Colors.black54],
             ),
 
             _CustomGradient(
@@ -206,8 +207,8 @@ class _CustomGradient extends StatelessWidget {
   final List<double> stops;
   final List<Color> colors;
   const _CustomGradient({
-    required this.begin,
-    required this.end,
+    this.begin = Alignment.centerLeft,
+    this.end = Alignment.centerRight,
     required this.stops,
     required this.colors,
   });
