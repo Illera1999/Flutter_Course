@@ -9,6 +9,12 @@ class AppTheme {
 
   ThemeData getTheme() => ThemeData(
     useMaterial3: true,
-    colorSchemeSeed: const Color.fromARGB(255, 0, 150, 255),
+    // Generamos un esquema de colores partiendo de la semilla y forzamos brillo oscuro
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: const Color(0xFF0096FF),
+      brightness: Brightness.dark,
+    ),
+    // Color de fondo de todas las pantallas (Scaffold)
+    scaffoldBackgroundColor: const Color(0xFF121212), // gris‑negro típico de dark mode
   );
 }
