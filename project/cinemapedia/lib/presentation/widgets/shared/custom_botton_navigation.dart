@@ -32,8 +32,8 @@ class CustomBottonNavigation extends StatelessWidget {
           label: 'Inicio',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search),
-          label: 'Categorías',
+          icon: Icon(Icons.movie),
+          label: 'Estrenos',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite),
