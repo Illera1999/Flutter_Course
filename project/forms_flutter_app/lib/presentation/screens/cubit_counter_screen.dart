@@ -40,7 +40,6 @@ class _WidgetCounterView extends StatelessWidget {
         // buildWhen: (previous, current) => previous.counter != current.counter,
         builder: (context, state) {
           // With Equatable, no need to check for changes
-          print('Esta cambiando el valor');
           return Center(child: Text('Counter value: ${state.counter}'));
         },
       ),

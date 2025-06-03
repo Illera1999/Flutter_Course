@@ -15,6 +15,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/cubits', // '/cubits'
       builder: (context, state) => const CubitCounterScreen(),
+    ) ,
+    GoRoute(
+      path: '/counter-bloc', // '/cubits'
+      builder: (context, state) => const BlocCounterScreen(),
     ) 
   ]
 );
