@@ -31,6 +31,15 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Divider(),
           ),
+          ListTile(
+            title: const Text('Nuevo Usuario'),
+            subtitle: const Text('Manejo de formulario'),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            onTap: () {
+              // Navigate to Cubits screen
+              context.push('/new-user');
+            },
+          ),
         ],
       ),
     );
