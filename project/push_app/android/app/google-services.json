@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "983158675063",
+    "project_id": "flutter-projects-efa9c",
+    "storage_bucket": "flutter-projects-efa9c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983158675063:android:a6b3f92da60a9ef20b9872",
+        "android_client_info": {
+          "package_name": "com.joseillera.push_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMiZ3jhg7PgAnPG7xbJeiWmN9Hz8zW7fQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
