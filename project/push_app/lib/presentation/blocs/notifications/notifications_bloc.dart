@@ -13,7 +13,10 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     // on<NotificationsEvent>((event, emit) {
     // });
     on<NotificationStatusChange>(_notificationStatusChanged);
+    // Verifica estado de las notificaciones
     _initialStatusCheck();
+    // Listener para notificaciones en Foreground
+    _onForegroundMessage();
   }
 
   static Future<void> initializedFCM() async {
@@ -22,16 +25,15 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     );
   }
 
-
-  void _notificationStatusChanged(NotificationStatusChange event, Emitter<NotificationsState> emit){
-    emit(state.copyWith(
-      status: event.status
-    ));
+  void _notificationStatusChanged(
+    NotificationStatusChange event,
+    Emitter<NotificationsState> emit,
+  ) {
+    emit(state.copyWith(status: event.status));
     _getFCMToken();
   }
 
-
-  void _initialStatusCheck() async{
+  void _initialStatusCheck() async {
     final settings = await messaging.getNotificationSettings();
     add(NotificationStatusChange(settings.authorizationStatus));
 
@@ -44,10 +46,25 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     */
   }
 
-  void _getFCMToken() async{
+  void _getFCMToken() async {
     if (state.status != AuthorizationStatus.authorized) return;
     final token = await messaging.getToken();
     print(token);
+  }
+
+  void _handleRemoteMessage(RemoteMessage message) {
+    print('Se coge mensaje con la app activa');
+    print('Datos del mensaje: \n ${message.data}');
+
+    if (message.notification == null) return;
+    print(
+      'El mensaje tambien contiene una notificación: ${message.notification}',
+    );
+  }
+
+
+  void _onForegroundMessage(){
+    FirebaseMessaging.onMessage.listen(_handleRemoteMessage);
   }
 
   void requestPermissions() async {
