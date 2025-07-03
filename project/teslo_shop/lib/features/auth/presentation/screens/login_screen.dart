@@ -55,7 +55,6 @@ class _LoginForm extends ConsumerWidget {
     BuildContext context,
     String message,
   ) {
-
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(message),
@@ -105,9 +104,9 @@ class _LoginForm extends ConsumerWidget {
               child: CustomFilledButton(
                 text: 'Ingresar',
                 buttonColor: Colors.black,
-                onPressed: () {
-                  ref.read(loginFormProvider.notifier).onFormSubmit();
-                },
+                onPressed: loginForm.isPosting
+                    ? null
+                    : ref.read(loginFormProvider.notifier).onFormSubmit,
               )),
           const Spacer(flex: 2),
           Row(
