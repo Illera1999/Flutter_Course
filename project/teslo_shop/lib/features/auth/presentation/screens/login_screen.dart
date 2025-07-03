@@ -96,7 +96,9 @@ class _LoginForm extends ConsumerWidget {
                   ? loginForm.password.errorMessage
                   : null,
               onChanged:
-                  ref.read(loginFormProvider.notifier).onPasswordChanged),
+                  ref.read(loginFormProvider.notifier).onPasswordChanged,
+              onFieldSubmitted: (_) => ref.read(loginFormProvider.notifier).onFormSubmit()
+              ),
           const SizedBox(height: 30),
           SizedBox(
               width: double.infinity,
