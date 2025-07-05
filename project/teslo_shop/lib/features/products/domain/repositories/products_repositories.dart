@@ -1,7 +1,7 @@
 import 'package:teslo_shop/features/products/domain/entities/product.dart';
 
 abstract class ProductsRepositories {
-  Future<List<Product>> getAllProducts({
+  Future<List<Product>> getProductsByPage({
     int limit = 10,
     int offset = 0,
   });

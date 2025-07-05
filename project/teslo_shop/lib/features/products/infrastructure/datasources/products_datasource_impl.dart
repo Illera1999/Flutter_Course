@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:teslo_shop/config/config.dart';
 import 'package:teslo_shop/features/products/domain/domain.dart';
-import 'package:teslo_shop/features/products/infrastructure/mapper/product_mapper.dart';
+import 'package:teslo_shop/features/products/infrastructure/mappers/product_mapper.dart';
 
 class ProductsDatasourcesImpl extends ProductsDatasource {
   late final Dio dio;
   final String accessToken;
   ProductsDatasourcesImpl({required this.accessToken})
       : dio = Dio(BaseOptions(
-          baseUrl: Envirement.apiUrl,
+          baseUrl: Encironment.apiUrl,
           headers: {'Authorization': 'Bearer $accessToken'},
         ));
 

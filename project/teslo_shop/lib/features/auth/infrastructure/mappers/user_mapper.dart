@@ -10,7 +10,7 @@ class UserMapper {
       email: json['email'],
       fullName: json['fullName'],
       roles: List<String>.from(json['roles'].map((roles) => roles.toString())),
-      token: json['token'],
+      token: json['token'] ?? '',
     );
   }
 

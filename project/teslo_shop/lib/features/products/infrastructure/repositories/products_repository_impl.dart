@@ -16,7 +16,7 @@ class ProductsRepositoryImpl extends ProductsRepositories {
   }
 
   @override
-  Future<List<Product>> getAllProducts({int limit = 10, int offset = 0}) {
+  Future<List<Product>> getProductsByPage({int limit = 10, int offset = 0}) {
     return datasource.getProductsByPage(limit: limit, offset: offset);
   }
 
