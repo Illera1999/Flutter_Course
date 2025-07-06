@@ -21,3 +21,8 @@ Para la splash native o pestaña de inicio
 ´´´
 dart run flutter_native_splash:create
 ´´´
+
+verificar archivos, previo al release
+´´´
+flutter build appbundle
+´´´
