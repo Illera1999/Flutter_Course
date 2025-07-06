@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.2.1
+  flutter_native_splash: ^2.4.6
   flutter_riverpod: ^2.6.1
   flutter_staggered_grid_view: ^0.7.0
   formz: ^0.8.0
@@ -21,9 +22,16 @@ dependencies:
 
 dev_dependencies:
   change_app_package_name: ^1.5.0
+  flutter_launcher_icons: ^0.14.4
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/app-icon-2.png"
+  min_sdk_android: 21
 
 flutter:
   uses-material-design: true
@@ -33,3 +41,9 @@ flutter:
     - assets/loaders/
     - assets/images/
     - google_fonts/montserrat_alternates/
+    - assets/icon/
+
+
+
+flutter_native_splash:
+  color: "#252829"
