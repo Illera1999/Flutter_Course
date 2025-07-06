@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:teslo_shop/config/config.dart';
 import 'package:teslo_shop/features/products/domain/domain.dart';
+import 'package:teslo_shop/features/products/infrastructure/error/product_errors.dart';
 import 'package:teslo_shop/features/products/infrastructure/mappers/product_mapper.dart';
 
 class ProductsDatasourcesImpl extends ProductsDatasource {
@@ -8,14 +9,29 @@ class ProductsDatasourcesImpl extends ProductsDatasource {
   final String accessToken;
   ProductsDatasourcesImpl({required this.accessToken})
       : dio = Dio(BaseOptions(
-          baseUrl: Encironment.apiUrl,
+          baseUrl: Environment.apiUrl,
           headers: {'Authorization': 'Bearer $accessToken'},
         ));
 
   @override
-  Future<Product> creatUpdateProduct(Map<String, dynamic> productLike) {
-    // TODO: implement creatUpdateProduct
-    throw UnimplementedError();
+  Future<Product> creatUpdateProduct(Map<String, dynamic> productLike) async {
+    try{
+      final String? productId = productLike['id'];
+      final String method = (productId == null) ? 'POST': 'PATCH';
+      final String url = (productId == null ) ? '/products': '/products/$productId';
+      productLike.remove('id');
+      final response = await  dio.request(
+        url,
+        data: productLike,
+        options: Options(
+          method: method
+        )
+      );
+      final product = ProductMapper.jsonToEntity(response.data);
+      return product;
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override
@@ -35,9 +51,20 @@ class ProductsDatasourcesImpl extends ProductsDatasource {
   }
 
   @override
-  Future<Product> getProductById(String productId) {
-    // TODO: implement getProductById
-    throw UnimplementedError();
+  Future<Product> getProductById(String id) async {
+    try {
+      final response = await dio.get('/products/$id');
+      final product = ProductMapper.jsonToEntity(response.data!);
+      return product;
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 404) {
+        throw ProductErrors();
+      } else {
+        throw Exception('Error fetching product: ${e.message}');
+      }
+    } catch (e) {
+      throw Exception('Error fetching product by ID: $e');
+    }
   }
 
   @override

@@ -5,7 +5,7 @@ import 'package:teslo_shop/features/auth/infrastructure/infrastructure.dart';
 
 class AuthDatasourceImpl extends AuthDatasource {
   final dio = Dio(BaseOptions(
-    baseUrl: Encironment.apiUrl,
+    baseUrl: Environment.apiUrl,
   ));
 
   @override
