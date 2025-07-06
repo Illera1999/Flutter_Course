@@ -1,4 +1,4 @@
-package com.example.teslo_shop
+package com.illera.editproduct
 
 import io.flutter.embedding.android.FlutterActivity
 
